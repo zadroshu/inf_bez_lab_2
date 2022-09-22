@@ -1,7 +1,6 @@
 public class DecryptTrivial {
-  public void substitutionDecrypt(String decryptedString) {
+  public void substitutionDecrypt(String alphabet, String decryptedString) {
     int shift = 0;
-    String alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
     while (shift <= alphabet.length() - 1) {
       String rez = "";
       for (char c : decryptedString.toCharArray()) {
@@ -10,7 +9,7 @@ public class DecryptTrivial {
             rez = rez.concat(String.valueOf(c));
           } else {
             int i = alphabet.indexOf(c);
-            i = (i - shift + alphabet.length()) % alphabet.length();
+            i = (i - shift) % alphabet.length();
             if (i < 0) {
               i = i + alphabet.length();
             }
